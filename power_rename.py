@@ -1,32 +1,21 @@
 import os
 
-# Percorso principale della directory contenente le cartelle
+# Percorso della directory in cui sono presenti i file
 rename_directory = "/Users/giovacasula/Projects/LicencePlateRecognition/test_immages"
 
-letters = [
-    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-    "AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK", "LL", "MM",
-    "NN", "OO", "PP", "QQ", "RR", "SS", "TT", "UU", "VV", "WW", "XX", "YY", "ZZ"
-]
-
+# Nome base per il nuovo file e l'estensione (in questo esempio ".jpg")
 new_name = "car"
 ext = ".jpg"
-elementi = os.listdir(rename_directory)
-numero_elem = list(elementi)
 
-for elemento in elementi:
-    folder_path = os.path.join(rename_directory, elemento)
+# Ottiene la lista dei file presenti nella directory (escludendo eventuali cartelle)
+files = [f for f in os.listdir(rename_directory) if os.path.isfile(os.path.join(rename_directory, f))]
+files = sorted(files)  # Ordina i file
 
-        # Lista e ordina i file all'interno della cartella
-    files = sorted(os.listdir(folder_path))
-    for idx, filename in enumerate(files):
-        old_file = os.path.join(folder_path, filename)
+# Itera su tutti i file, rinominandoli uno per uno
+for idx, filename in enumerate(files):
+    old_file = os.path.join(rename_directory, filename)
+    new_filename = f"{new_name}_{idx}{ext}"
+    new_file = os.path.join(rename_directory, new_filename)
     
-        # Estrai l'estensione del file
-        _, ext = os.path.splitext(filename)
-        new_filename = f"{elemento}_{idx}{ext}"
-        new_file = os.path.join(folder_path, new_filename)
-        
-        # Stampa l'operazione di rinomina (utile per debug)
-        print(f"Rinomino {old_file} in {new_file}")
-        os.rename(old_file, new_file)
+    print(f"Rinomino {old_file} in {new_file}")
+    os.rename(old_file, new_file)
