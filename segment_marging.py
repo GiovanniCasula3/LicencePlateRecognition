@@ -29,7 +29,7 @@ for regions in regionprops(labelled_plate):
         
         # Calculate the width and height of the character
         # Use resize to standardize the dimensions
-        resized_char = resize(roi, (20, 20))
+        resized_char = resize(roi, (128, 128))
         characters.append(resized_char)
         
         # Manteniamo un elenco delle colonne
