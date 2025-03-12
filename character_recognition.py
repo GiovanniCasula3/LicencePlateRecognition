@@ -1,10 +1,3 @@
-import kagglehub
-
-# Download latest version
-path = kagglehub.dataset_download("/Users/giovacasula/Projects/LicencePlateRecognition/license-plate-dataset/")
-
-print("Path to dataset files:", path)
-
 import os 
 import numpy as np
 from sklearn.svm import SVC
@@ -40,7 +33,7 @@ def cross_validation(model, num_of_fold, train_data, train_label):
     print(accuracy_result * 100)
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
-training_dataset_dir = os.path.join(current_dir, "training_data/train20X20/")
+training_dataset_dir = os.path.join(current_dir, "license-plate-dataset")
 image_data, target_data = read_training_data(training_dataset_dir)
 
 svc_model = SVC(kernel="linear", probability=True)
