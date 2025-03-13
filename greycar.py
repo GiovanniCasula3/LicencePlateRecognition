@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Carica l'immagine in scala di grigi.
-car_imm = imread("test_immages/car6.jpg", as_gray=True)
+car_imm = imread("test_immages/car_6.jpg", as_gray=True)
 print("Dimensioni immagine:", car_imm.shape)
 
 # Se l'immagine è normalizzata in [0,1], moltiplichiamo per 255 e convertiamo in uint8 per ottenere valori standard in scala di grigi

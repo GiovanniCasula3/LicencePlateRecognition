@@ -4,7 +4,7 @@ from skimage import measure
 from skimage.measure import regionprops
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from . import connected_regions
+import connected_regions
 
 license_plate = np.invert(connected_regions.plate_like_objects[2])
 labelled_plate = measure.label(license_plate)
